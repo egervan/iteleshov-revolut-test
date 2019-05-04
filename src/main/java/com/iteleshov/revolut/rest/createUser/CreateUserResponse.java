@@ -1,4 +1,7 @@
-package com.iteleshov.revolut.rest;
+package com.iteleshov.revolut.rest.createUser;
+
+import com.iteleshov.revolut.rest.common.AbstractResponse;
+import com.iteleshov.revolut.rest.common.ResponseStatus;
 
 /**
  * @author iteleshov

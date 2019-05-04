@@ -3,7 +3,7 @@ package com.iteleshov.revolut;
 import com.iteleshov.revolut.dao.UserDao;
 import com.iteleshov.revolut.dao.impl.UserDaoImpl;
 import com.iteleshov.revolut.model.User;
-import com.iteleshov.revolut.rest.UserRestService;
+import com.iteleshov.revolut.rest.service.UserRestService;
 import com.iteleshov.revolut.service.UserService;
 import com.iteleshov.revolut.service.impl.UserServiceImpl;
 import io.dropwizard.Application;

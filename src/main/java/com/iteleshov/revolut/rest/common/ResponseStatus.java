@@ -1,4 +1,4 @@
-package com.iteleshov.revolut.rest;
+package com.iteleshov.revolut.rest.common;
 
 /**
  * @author iteleshov

@@ -1,9 +1,11 @@
-package com.iteleshov.revolut.rest;
+package com.iteleshov.revolut.rest.transferMoney;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.math.BigDecimal;
 
 /**
  * @author iteleshov
@@ -13,6 +15,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Header {
-    private String messageId;
+public class TransferMoneyBody {
+    private String originator;
+    private String receiver;
+    private BigDecimal amount;
 }
