@@ -10,6 +10,6 @@ import java.math.BigDecimal;
  */
 public interface UserDao {
     User getByUsername(String username);
-    User save(User user);
+    User create(User user);
     void updateAmount(String username, BigDecimal amount);
 }

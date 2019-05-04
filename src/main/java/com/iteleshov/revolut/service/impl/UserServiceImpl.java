@@ -28,8 +28,9 @@ public class UserServiceImpl implements UserService {
         return userDao.getByUsername(username);
     }
 
-    public static void main(String[] args) {
-        System.out.println(new BigDecimal("1").compareTo(ZERO));
+    @Override
+    public User create(String username, BigDecimal amount) {
+        return userDao.create(new User(username, amount));
     }
 
     @Transaction(REPEATABLE_READ)

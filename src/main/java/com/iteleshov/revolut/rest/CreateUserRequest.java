@@ -1,8 +1,9 @@
 package com.iteleshov.revolut.rest;
 
-import com.iteleshov.revolut.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
@@ -11,13 +12,11 @@ import java.math.BigDecimal;
  * @since 1.0
  */
 @Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
-public class UserDto {
-    private Long id;
+public class CreateUserRequest {
+    private String messageId;
     private String username;
-    private BigDecimal cash;
-
-    public UserDto(User user) {
-        this(null, user.getUsername(), user.getAmount());
-    }
+    private BigDecimal amount;
 }

@@ -10,5 +10,6 @@ import java.math.BigDecimal;
  */
 public interface UserService {
     User getByUsername(String username);
+    User create(String username, BigDecimal amount);
     void transferMoney(String originator, String receiver, BigDecimal amount);
 }

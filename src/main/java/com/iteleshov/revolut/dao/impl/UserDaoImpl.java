@@ -26,11 +26,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User save(User user) {
-        handle.createUpdate("MERGE INTO user " +
-        "USING user.username = :username " +
-        "WHEN NOT MATCHED THEN INSERT (username, amount) VALUES (:username, :amount) " +
-        "WHEN MATCHED THEN UPDATE SET amount = :amount")
+    public User create(User user) {
+        handle.createUpdate("INSERT INTO user (username, amount) VALUES (:username, :amount)")
                 .bindBean(user)
                 .execute();
 
