@@ -4,7 +4,6 @@ import com.iteleshov.revolut.dao.UserDao;
 import com.iteleshov.revolut.model.User;
 import lombok.AllArgsConstructor;
 import org.jdbi.v3.core.Handle;
-import org.jdbi.v3.core.Jdbi;
 
 import java.math.BigDecimal;
 
@@ -14,12 +13,15 @@ import java.math.BigDecimal;
  */
 @AllArgsConstructor
 public class UserDaoImpl implements UserDao {
-    private final Jdbi jdbi;
+    private static final String SELECT_BY_USERNAME = "SELECT * FROM USER WHERE username = :username";
+    private static final String CREATE_USER = "INSERT INTO USER (username, amount) VALUES (:username, :amount)";
+    private static final String UPDATE_USER_AMOUNT = "UPDATE USER SET amount = :amount WHERE username = :username";
+
     private final Handle handle;
 
     @Override
     public User getByUsername(String username) {
-        return handle.createQuery("SELECT * FROM USER WHERE username = :username")
+        return handle.createQuery(SELECT_BY_USERNAME)
                 .bind("username", username)
                 .mapToBean(User.class)
                 .one();
@@ -27,7 +29,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User create(User user) {
-        handle.createUpdate("INSERT INTO user (username, amount) VALUES (:username, :amount)")
+        handle.createUpdate(CREATE_USER)
                 .bindBean(user)
                 .execute();
 
@@ -36,7 +38,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void updateAmount(String username, BigDecimal amount) {
-        handle.createUpdate("UPDATE user SET amount = :amount WHERE username = :username")
+        handle.createUpdate(UPDATE_USER_AMOUNT)
                 .bind("username", username)
                 .bind("amount", amount)
                 .execute();

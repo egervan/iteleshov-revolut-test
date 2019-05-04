@@ -26,7 +26,7 @@ public class TestTaskApplication extends Application<TestTaskConfiguration> {
     public void run(TestTaskConfiguration configuration, Environment environment) throws Exception {
         final Jdbi jdbi = Jdbi.create("jdbc:h2:mem:");
         final Handle handle = jdbi.open();
-        final UserDao userDao = new UserDaoImpl(jdbi, handle);
+        final UserDao userDao = new UserDaoImpl(handle);
         final UserService userService = new UserServiceImpl(userDao);
 
         handle.execute("CREATE TABLE user (username VARCHAR PRIMARY KEY, amount NUMERIC)");
