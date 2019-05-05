@@ -7,15 +7,11 @@ import org.jdbi.v3.core.Handle;
 
 import java.math.BigDecimal;
 
-/**
- * @author iteleshov
- * @since 1.0
- */
 @AllArgsConstructor
 public class UserDaoImpl implements UserDao {
     private static final String SELECT_BY_USERNAME = "SELECT * FROM USER WHERE username = :username";
-    private static final String CREATE_USER = "INSERT INTO USER (username, amount) VALUES (:username, :amount)";
-    private static final String UPDATE_USER_AMOUNT = "UPDATE USER SET amount = :amount WHERE username = :username";
+    private static final String CREATE_USER = "INSERT INTO USER (username, balance) VALUES (:username, :balance)";
+    private static final String UPDATE_USER_AMOUNT = "UPDATE USER SET balance = :balance WHERE username = :username";
 
     private final Handle handle;
 
@@ -40,7 +36,7 @@ public class UserDaoImpl implements UserDao {
     public void updateAmount(String username, BigDecimal amount) {
         handle.createUpdate(UPDATE_USER_AMOUNT)
                 .bind("username", username)
-                .bind("amount", amount)
+                .bind("balance", amount)
                 .execute();
     }
 }

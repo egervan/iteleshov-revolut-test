@@ -3,21 +3,16 @@ package com.iteleshov.revolut.rest.common;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import static java.util.Objects.requireNonNull;
+import javax.validation.constraints.NotNull;
 
-/**
- * @author iteleshov
- * @since 1.0
- */
 @Getter
 @NoArgsConstructor
 public class AbstractRequest<T> {
     private Header header;
     private T body;
 
-    public AbstractRequest(Header header, T body) {
-        requireNonNull(header, "Header must be present");
-        requireNonNull(body, "Body must be present");
+    public AbstractRequest(@NotNull(message = "Header must be present") Header header,
+                           @NotNull(message = "Body must be present") T body) {
         this.header = header;
         this.body = body;
     }

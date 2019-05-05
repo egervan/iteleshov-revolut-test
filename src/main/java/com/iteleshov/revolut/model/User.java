@@ -7,15 +7,11 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
-/**
- * @author iteleshov
- * @since 1.0
- */
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
     private String username;
-    private BigDecimal amount;
+    private BigDecimal balance;
 }

@@ -13,10 +13,6 @@ import org.jdbi.v3.core.Jdbi;
 
 import java.math.BigDecimal;
 
-/**
- * @author iteleshov
- * @since 1.0
- */
 public class TestTaskApplication extends Application<TestTaskConfiguration> {
     public static void main(String[] args) throws Exception {
         new TestTaskApplication().run("server", "src/main/resources/properties.yml");
@@ -29,12 +25,12 @@ public class TestTaskApplication extends Application<TestTaskConfiguration> {
         final UserDao userDao = new UserDaoImpl(handle);
         final UserService userService = new UserServiceImpl(userDao);
 
-        handle.execute("CREATE TABLE user (username VARCHAR PRIMARY KEY, amount NUMERIC)");
-        handle.createUpdate("INSERT INTO user(username, amount) VALUES (:username, :amount)")
+        handle.execute("CREATE TABLE user (username VARCHAR PRIMARY KEY, balance NUMERIC)");
+        handle.createUpdate("INSERT INTO user(username, balance) VALUES (:username, :balance)")
                     .bindBean(new User("David", new BigDecimal("500000")))
                     .execute();
 
-        handle.createUpdate("INSERT INTO user(username, amount) VALUES (:username, :amount)")
+        handle.createUpdate("INSERT INTO user(username, balance) VALUES (:username, :balance)")
                 .bindBean(new User("Nic", new BigDecimal("100000")))
                 .execute();
 

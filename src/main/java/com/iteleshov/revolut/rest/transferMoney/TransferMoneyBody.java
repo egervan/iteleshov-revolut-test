@@ -7,10 +7,6 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
-/**
- * @author iteleshov
- * @since 1.0
- */
 @Getter
 @Setter
 @NoArgsConstructor

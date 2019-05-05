@@ -10,14 +10,12 @@ import lombok.AllArgsConstructor;
 
 import javax.ws.rs.*;
 
+import java.math.BigDecimal;
+
 import static com.iteleshov.revolut.rest.common.ResponseStatus.ERROR;
 import static com.iteleshov.revolut.rest.common.ResponseStatus.SUCCESS;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
-/**
- * @author iteleshov
- * @since 1.0
- */
 @Path("/user")
 @Produces(APPLICATION_JSON)
 @AllArgsConstructor
@@ -36,7 +34,8 @@ public class UserRestService {
         final TransferMoneyResponse response = new TransferMoneyResponse(SUCCESS, request.getHeader().getMessageId());
 
         try {
-            userService.transferMoney(request.getBody().getOriginator(), request.getBody().getReceiver(), request.getBody().getAmount());
+            final BigDecimal originatorBalance = userService.transferMoney(request.getBody().getOriginator(), request.getBody().getReceiver(), request.getBody().getAmount());
+            response.setOriginatorBalance(originatorBalance);
         } catch (Exception e) {
             response.setStatus(ERROR);
             response.setErrorMessage(e.getMessage());
@@ -51,7 +50,7 @@ public class UserRestService {
         final CreateUserResponse response = new CreateUserResponse(SUCCESS, request.getHeader().getMessageId());
 
         try {
-            userService.create(request.getBody().getUsername(), request.getBody().getAmount());
+            userService.create(request.getBody().getUsername(), request.getBody().getBalance());
         } catch (Exception e) {
             response.setStatus(ERROR);
             response.setErrorMessage(e.getMessage());

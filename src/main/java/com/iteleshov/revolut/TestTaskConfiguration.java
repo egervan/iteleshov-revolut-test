@@ -4,10 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
 import org.hibernate.validator.constraints.NotEmpty;
 
-/**
- * @author iteleshov
- * @since 1.0
- */
 public class TestTaskConfiguration extends Configuration {
     @NotEmpty
     private String template;

@@ -2,18 +2,13 @@ package com.iteleshov.revolut.rest.common;
 
 import lombok.Getter;
 
-import static java.util.Objects.requireNonNull;
+import javax.validation.constraints.NotNull;
 
-/**
- * @author iteleshov
- * @since 1.0
- */
 @Getter
 public class Header {
     private String messageId;
 
-    public Header(String messageId) {
-        requireNonNull(messageId, "MessageId must be present");
+    public Header(@NotNull(message = "MessageId must be present") String messageId) {
         this.messageId = messageId;
     }
 }

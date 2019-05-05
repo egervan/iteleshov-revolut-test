@@ -7,10 +7,6 @@ import lombok.Setter;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
-/**
- * @author iteleshov
- * @since 1.0
- */
 @Setter
 @Getter
 @NoArgsConstructor
