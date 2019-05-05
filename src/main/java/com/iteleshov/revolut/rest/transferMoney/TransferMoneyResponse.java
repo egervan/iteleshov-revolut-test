@@ -1,18 +1,14 @@
 package com.iteleshov.revolut.rest.transferMoney;
 
 import com.iteleshov.revolut.rest.common.AbstractResponse;
-import com.iteleshov.revolut.rest.common.ResponseStatus;
-import lombok.AllArgsConstructor;
+import com.iteleshov.revolut.rest.common.ResponseHeader;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-
 @Setter
 @Getter
-public class TransferMoneyResponse extends AbstractResponse {
-    private BigDecimal originatorBalance;
-    public TransferMoneyResponse(ResponseStatus status, String messageId) {
-        super(status, messageId);
+public class TransferMoneyResponse extends AbstractResponse<TransferMoneyResponseBody> {
+    public TransferMoneyResponse(ResponseHeader header) {
+        super(header);
     }
 }

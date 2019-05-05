@@ -2,22 +2,18 @@ package com.iteleshov.revolut.rest.common;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
 @Setter
 @Getter
-@NoArgsConstructor
 @JsonInclude(NON_NULL)
-public abstract class AbstractResponse {
-    private ResponseStatus status;
-    private String messageId;
-    private String errorMessage;
+public abstract class AbstractResponse<T> {
+    private ResponseHeader header;
+    private T body;
 
-    public AbstractResponse(ResponseStatus status, String messageId) {
-        this.status = status;
-        this.messageId = messageId;
+    public AbstractResponse(ResponseHeader header) {
+        this.header = header;
     }
 }

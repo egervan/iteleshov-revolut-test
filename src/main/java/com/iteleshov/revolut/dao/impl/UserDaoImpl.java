@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.jdbi.v3.core.Handle;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 @AllArgsConstructor
 public class UserDaoImpl implements UserDao {
@@ -16,11 +17,11 @@ public class UserDaoImpl implements UserDao {
     private final Handle handle;
 
     @Override
-    public User getByUsername(String username) {
+    public Optional<User> getByUsername(String username) {
         return handle.createQuery(SELECT_BY_USERNAME)
                 .bind("username", username)
                 .mapToBean(User.class)
-                .one();
+                .findOne();
     }
 
     @Override

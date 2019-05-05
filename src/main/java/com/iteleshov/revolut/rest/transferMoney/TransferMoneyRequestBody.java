@@ -1,4 +1,4 @@
-package com.iteleshov.revolut.rest.createUser;
+package com.iteleshov.revolut.rest.transferMoney;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,8 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateUserBody {
-    private String username;
-    private BigDecimal balance;
+public class TransferMoneyRequestBody {
+    private String originator;
+    private String receiver;
+    private BigDecimal amount;
 }

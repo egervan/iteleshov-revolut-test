@@ -7,6 +7,7 @@ import com.iteleshov.revolut.rest.service.UserRestService;
 import com.iteleshov.revolut.service.UserService;
 import com.iteleshov.revolut.service.impl.UserServiceImpl;
 import io.dropwizard.Application;
+import io.dropwizard.jersey.jackson.JsonProcessingExceptionMapper;
 import io.dropwizard.setup.Environment;
 import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
@@ -36,5 +37,6 @@ public class TestTaskApplication extends Application<TestTaskConfiguration> {
 
         final UserRestService userRestService = new UserRestService(userService);
         environment.jersey().register(userRestService);
+        environment.jersey().register(new JsonProcessingExceptionMapper(true));
     }
 }
