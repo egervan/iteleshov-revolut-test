@@ -1,6 +1,6 @@
 package com.iteleshov.revolut.service.impl;
 
-import com.iteleshov.revolut.TransferAmountException;
+import com.iteleshov.revolut.exceptions.TransferAmountException;
 import com.iteleshov.revolut.dao.UserDao;
 import com.iteleshov.revolut.model.User;
 import com.iteleshov.revolut.service.UserService;
