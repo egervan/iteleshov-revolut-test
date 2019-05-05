@@ -4,9 +4,9 @@ import com.iteleshov.revolut.TransferAmountException;
 import com.iteleshov.revolut.dao.UserDao;
 import com.iteleshov.revolut.model.User;
 import com.iteleshov.revolut.service.UserService;
-import lombok.AllArgsConstructor;
 import org.jdbi.v3.sqlobject.transaction.Transaction;
 
+import javax.inject.Inject;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -17,9 +17,13 @@ import static java.lang.String.format;
 import static java.util.concurrent.CompletableFuture.supplyAsync;
 import static org.jdbi.v3.core.transaction.TransactionIsolationLevel.SERIALIZABLE;
 
-@AllArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
+
+    @Inject
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @Override
     @Transaction(readOnly = true)

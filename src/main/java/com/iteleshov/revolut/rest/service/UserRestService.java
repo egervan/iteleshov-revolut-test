@@ -1,7 +1,5 @@
 package com.iteleshov.revolut.rest.service;
 
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iteleshov.revolut.model.User;
 import com.iteleshov.revolut.rest.common.ResponseHeader;
 import com.iteleshov.revolut.rest.createUser.CreateUserRequest;
@@ -12,6 +10,7 @@ import com.iteleshov.revolut.rest.transferMoney.TransferMoneyResponseBody;
 import com.iteleshov.revolut.service.UserService;
 import lombok.AllArgsConstructor;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 
 import java.math.BigDecimal;
@@ -23,9 +22,13 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @Path("/user")
 @Produces(APPLICATION_JSON)
-@AllArgsConstructor
 public class UserRestService {
     private final UserService userService;
+
+    @Inject
+    public UserRestService(UserService userService) {
+        this.userService = userService;
+    }
 
     @GET
     public User getByUsername(@QueryParam("username") String username) {
